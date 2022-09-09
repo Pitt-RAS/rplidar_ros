@@ -311,6 +311,9 @@ int main(int argc, char * argv[]) {
         angle_compensate_multiple = points_per_circle/360.0  + 1;
         if(angle_compensate_multiple < 1) 
           angle_compensate_multiple = 1.0;
+        //For some god awful reason, you need to override this for it to work on arm processors
+        //Absolutly no idea why, will make rosparam later
+        angle_compensate_multiple = 1.0;
         max_distance = (float)current_scan_mode.max_distance;
         ROS_INFO("current scan mode: %s, sample rate: %d Khz, max_distance: %.1f m, scan frequency:%.1f Hz, ", current_scan_mode.scan_mode,(int)(1000/current_scan_mode.us_per_sample+0.5),max_distance, scan_frequency); 
     }
